@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup Toggle</title>
+  <link href="https://cdn.jsdelivr.net/npm/material-design-iconic-font@2.2.0/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-section, .toggle-section {
+      padding: 2rem;
+    }
+
+    .form-section h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .input-group .zmdi {
+      position: absolute;
+      top: 50%;
+      left: 0.75rem;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .forgot {
+      text-align: right;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .forgot a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.5rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    .toggle-section {
+      background: #f9fafb;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .toggle-section h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .toggle-section .btn {
+      background: #2563eb;
+    }
+
+    .toggle-section .btn:hover {
+      background: #1d4ed8;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="login-form">
+    <div class="form-section">
+      <h4>Login</h4>
+      <form>
+        <div class="input-group">
+          <i class="zmdi zmdi-account"></i>
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <div class="input-group">
+          <i class="zmdi zmdi-email"></i>
+          <input type="password" placeholder="Password" />
+        </div>
+        <div class="forgot">
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+    <div class="toggle-section">
+      <h3>First time here?</h3>
+      <button class="btn" onclick="toggleForm('signup')">Sign Up</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="signup-form">
+    <div class="form-section">
+      <h4>Sign Up</h4>
+      <form>
+        <div class="input-group">
+          <i class="zmdi zmdi-account"></i>
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <div class="input-group">
+          <i class="zmdi zmdi-account"></i>
+          <input type="text" placeholder="Enter Username" />
+        </div>
+        <div class="input-group">
+          <i class="zmdi zmdi-email"></i>
+          <input type="password" placeholder="Password" />
+        </div>
+        <div class="input-group">
+          <i class="zmdi zmdi-email"></i>
+          <input type="password" placeholder="Confirm Password" />
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+    </div>
+    <div class="toggle-section">
+      <h3>Already have an account?</h3>
+      <button class="btn" onclick="toggleForm('login')">Login</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm(target) {
+      const login = document.getElementById('login-form');
+      const signup = document.getElementById('signup-form');
+
+      if (target === 'signup') {
+        login.classList.add('hidden');
+        signup.classList.remove('hidden');
+      } else {
+        signup.classList.add('hidden');
+        login.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
